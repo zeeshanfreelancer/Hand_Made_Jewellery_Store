@@ -1,6 +1,12 @@
 import React, { useState } from 'react';
 import Navbar from './component/Navbar'; // Navbar ko yahan import karein
 import Display from './component/Display';
+import JewelryDisplay from './component/JewelryDisplay';
+import JewelrySlider from './component/JewelrySlider';
+import JewelryHeroSection from './component/JewelryHeroSection';
+import JewelryShowcase from './component/JewelryShowcase';
+import Footer from './component/Footer';
+import RingCollection from './component/RingCollection';
 
 function App() {
   // Example: Cart ke items count manage karne ke liye state
@@ -11,8 +17,12 @@ function App() {
       {/* 1. Navbar ko sab se upar place karein */}
       <Navbar cartCount={cartCount} />
 <Display/>
-      {/* 2. Baaki aap ki website ka content yahan aayega */}
-   
+<JewelryDisplay/>
+<JewelryShowcase/>
+<JewelryHeroSection/>
+<RingCollection/>
+      <JewelrySlider/>
+   <Footer/>
     </div>
   );
 }

@@ -1,91 +1,129 @@
 import React, { useState } from 'react';
-// Tailwind Icons ke liye Lucide-React ya koi bhi icon library use kar sakte hain
-import { ShoppingCart, Search, User } from 'lucide-react';
+import { Search, ShoppingBag, User, Menu, X } from 'lucide-react';
 
-const Navbar = () => {
+const Navbar = ({ cartCount = 0 }) => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
-  const [cartCount, setCartCount] = useState(0);
 
   const handleSearch = (e) => {
     e.preventDefault();
-    console.log('Searching for:', searchQuery);
-  };
-
-  const handleAddToCart = () => {
-    setCartCount(cartCount + 1);
+    if (searchQuery.trim()) {
+      console.log('Searching for:', searchQuery);
+      // Yahan search functionality ka code aayega
+    }
   };
 
   return (
-    <nav className="bg-white shadow-md w-full px-4 py-3 sticky top-0 z-50">
-      <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
-        
-        {/* 1. LOGO */}
-        <div className="flex items-center space-x-2">
-          <a href="#" className="text-2xl font-bold text-blue-600 flex items-center gap-1">
-            <span className="bg-blue-600 text-white px-2 py-1 rounded-lg text-xl">My</span>
-            Store
-          </a>
-        </div>
+    <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-amber-100 shadow-sm">
+      {/* Top Banner (Optional - Announcement Bar) */}
+      <div className="bg-amber-900 text-amber-50 text-xs py-5 text-center font-light tracking-wide">
+        ✨ Free Worldwide Shipping on Orders Over $150 ✨
+      </div>
 
-        {/* 2. SEARCH BAR */}
-        <form 
-          onSubmit={handleSearch} 
-          className="flex-1 max-w-md mx-4 relative hidden sm:block"
-        >
-          <input
-            type="text"
-            placeholder="Search products, brands..."
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm"
-          />
-          <Search className="absolute left-3 top-2.5 text-gray-400 w-4 h-4" />
-        </form>
-
-        {/* RIGHT SECTION: Links, Cart & Login/Register */}
-        <div className="flex items-center space-x-4">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-20">
           
-          {/* Mobile Search Icon (Only visible on small screens) */}
-          <button className="sm:hidden text-gray-600 hover:text-blue-600">
-            <Search className="w-6 h-6" />
-          </button>
+         {/* 1. Logo Name */}
+<div className="flex-shrink-0 flex items-center">
+  <a href="/" className="group flex flex-col items-start">
+    <span className="font-serif text-2xl sm:text-3xl font-bold text-amber-900 tracking-wider group-hover:text-amber-700 transition">
+      IQRA
+    </span>
+    <span className="text-[10px] sm:text-xs tracking-[0.25em] font-sans uppercase text-amber-700 font-medium -mt-1">
+      Jewelry
+    </span>
+  </a>
+</div>
 
-          {/* 3. LOGIN & REGISTER LINKS */}
-          <div className="flex items-center space-x-3 text-sm font-medium">
-            <a 
-              href="#login" 
-              className="text-gray-700 hover:text-blue-600 transition-colors"
-            >
-              Login
-            </a>
-            <span className="text-gray-300">|</span>
-            <a 
-              href="#register" 
-              className="text-gray-700 hover:text-blue-600 transition-colors"
-            >
-              Register
-            </a>
+          {/* 2. Search Bar (Desktop) */}
+          <div className="hidden md:flex flex-1 max-w-md mx-8">
+            <form onSubmit={handleSearch} className="w-full relative">
+              <input
+                type="text"
+                placeholder="Search rings, necklaces, diamonds..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="w-full pl-10 pr-4 py-2 text-sm bg-amber-50/50 text-gray-800 rounded-full border border-amber-200 focus:outline-none focus:border-amber-500 focus:ring-1 focus:ring-amber-500 transition placeholder-gray-400"
+              />
+              <Search className="absolute left-3.5 top-2.5 h-4 w-4 text-amber-700" />
+            </form>
           </div>
 
-          {/* 4. ADD TO CART CARD / BUTTON */}
-          <button 
-            onClick={handleAddToCart}
-            className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium transition-all shadow-sm active:scale-95"
-          >
-            <div className="relative">
-              <ShoppingCart className="w-5 h-5" />
-              {cartCount > 0 && (
-                <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold rounded-full h-4 w-4 flex items-center justify-center">
+          {/* 3. Action Icons & Auth (Desktop) */}
+          <div className="hidden md:flex items-center space-x-6">
+            {/* Login / Register */}
+            <div className="flex items-center space-x-2 text-sm text-gray-700">
+              <User className="h-5 w-5 text-amber-900" />
+              <a href="/login" className="hover:text-amber-700 font-medium transition">
+                Login
+              </a>
+              <span className="text-gray-300">/</span>
+              <a href="/register" className="hover:text-amber-700 font-medium transition">
+                Register
+              </a>
+            </div>
+
+            {/* Add to Cart Icon */}
+            <a href="/cart" className="relative p-2 text-amber-900 hover:text-amber-700 transition" aria-label="Shopping Cart">
+              <ShoppingBag className="h-6 w-6" />
+              {cartCount >= 0 && (
+                <span className="absolute top-0 right-0 inline-flex items-center justify-center px-1.5 py-0.5 text-xs font-bold leading-none text-white transform translate-x-1/2 -translate-y-1/2 bg-amber-700 rounded-full">
                   {cartCount}
                 </span>
               )}
-            </div>
-            <span className="hidden md:inline">Add to Cart</span>
-          </button>
+            </a>
+          </div>
+
+          {/* Mobile Menu Button */}
+          <div className="flex md:hidden items-center space-x-4">
+            <a href="/cart" className="relative p-1 text-amber-900">
+              <ShoppingBag className="h-6 w-6" />
+              {cartCount >= 0 && (
+                <span className="absolute top-0 right-0 inline-flex items-center justify-center px-1.5 py-0.5 text-xs font-bold text-white bg-amber-700 rounded-full">
+                  {cartCount}
+                </span>
+              )}
+            </a>
+            <button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="text-amber-900 hover:text-amber-700 focus:outline-none"
+            >
+              {isMenuOpen ? <X className="h-7 w-7" /> : <Menu className="h-7 w-7" />}
+            </button>
+          </div>
 
         </div>
+
+        {/* Search Bar for Mobile View */}
+        <div className="md:hidden pb-4">
+          <form onSubmit={handleSearch} className="relative">
+            <input
+              type="text"
+              placeholder="Search jewelry..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="w-full pl-10 pr-4 py-2 text-sm bg-amber-50/50 text-gray-800 rounded-full border border-amber-200 focus:outline-none focus:border-amber-500"
+            />
+            <Search className="absolute left-3.5 top-2.5 h-4 w-4 text-amber-700" />
+          </form>
+        </div>
       </div>
-    </nav>
+
+      {/* Mobile Drawer / Menu */}
+      {isMenuOpen && (
+        <div className="md:hidden bg-white border-b border-amber-100 px-4 pt-2 pb-6 space-y-4">
+          <div className="pt-2 border-t border-amber-50 flex items-center justify-around text-sm font-medium">
+            <a href="/login" className="flex items-center gap-2 text-amber-900 hover:text-amber-700">
+              <User className="h-4 w-4" /> Login
+            </a>
+            <span className="text-gray-300">|</span>
+            <a href="/register" className="text-amber-900 hover:text-amber-700">
+              Register Account
+            </a>
+          </div>
+        </div>
+      )}
+    </header>
   );
 };
 

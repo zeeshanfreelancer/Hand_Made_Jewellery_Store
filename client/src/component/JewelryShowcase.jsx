@@ -23,6 +23,12 @@ const JewelryShowcase = () => {
 
   return (
     <section className="max-w-7xl mx-auto px-4 py-12 space-y-8">
+      <div className="text-center mb-8">
+        <h2 className="text-3xl md:text-4xl font-serif font-bold text-amber-900">
+          Latest Modern Display Collection
+        </h2>
+        <p className="text-gray-600 mt-2">Explore our fine jewelry designs</p>
+      </div>
       
       {/* ---------------- TOP DIV: 3 Pictures Display ---------------- */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

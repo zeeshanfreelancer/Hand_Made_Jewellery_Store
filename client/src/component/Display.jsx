@@ -23,7 +23,7 @@ export default function Display() {
 
   {/* 3. Text Content (Video ke upar show hoga) */}
   <div className="relative z-20 text-center px-4">
-    <h1 className="text-4xl md:text-6xl font-serif font-bold text-amber-100 drop-shadow-md">
+    <h1 className="text-4xl md:text-6xl font-serif font-bold text-amber-400 drop-shadow-md">
       Welcome to    IQRA Jewelry
     </h1>
     <p className="text-lg md:text-xl text-gray-200 mt-4 max-w-xl mx-auto drop-shadow">

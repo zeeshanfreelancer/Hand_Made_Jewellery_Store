@@ -2,12 +2,12 @@ import React from 'react';
 
 // Sample Ring Collection Data
 const ringCollection = [
-  { id: 1, name: "Gold Diamond Ring", price: "Rs. 45,000", image: "https://via.placeholder.com/200" },
-  { id: 2, name: "Silver Solitaire Ring", price: "Rs. 15,000", image: "https://via.placeholder.com/200" },
-  { id: 3, name: "Rose Gold Band", price: "Rs. 25,000", image: "https://via.placeholder.com/200" },
-  { id: 4, name: "Emerald Cut Ring", price: "Rs. 50,000", image: "https://via.placeholder.com/200" },
-  { id: 5, name: "Platinum Wedding Band", price: "Rs. 60,000", image: "https://via.placeholder.com/200" },
-  { id: 6, name: "Vintage Ruby Ring", price: "Rs. 35,000", image: "https://via.placeholder.com/200" },
+  { id: 1, name: "Gold Diamond Ring", price: "Rs. 45,000", image: "/assets/ring2.jpeg" },
+  { id: 2, name: "Silver Solitaire Ring", price: "Rs. 15,000", image: "/assets/ring1.jpeg" },
+  { id: 3, name: "Rose Gold Band", price: "Rs. 25,000", image: "/assets/ring2.jpeg" },
+  { id: 4, name: "Emerald Cut Ring", price: "Rs. 50,000", image: "/assets/ring5.jpeg" },
+  { id: 5, name: "Platinum Wedding Band", price: "Rs. 60,000", image: "/assets/ring6.jpeg" },
+  { id: 6, name: "Vintage Ruby Ring", price: "Rs. 35,000", image: "/assets/ring7.jpeg" },
 ];
 
 const RingCollection = () => {
@@ -30,7 +30,7 @@ const RingCollection = () => {
             <h3 className="text-xl font-semibold mb-2">{ring.name}</h3>
             <p className="text-gray-600 font-bold mb-4">{ring.price}</p>
             <button className="bg-black text-white px-4 py-2 rounded-lg hover:bg-gray-800 transition">
-              View Details
+              Order Now
             </button>
           </div>
         ))}

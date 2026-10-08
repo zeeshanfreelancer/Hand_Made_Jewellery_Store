@@ -7,6 +7,7 @@ import JewelryHeroSection from './component/JewelryHeroSection';
 import JewelryShowcase from './component/JewelryShowcase';
 import Footer from './component/Footer';
 import RingCollection from './component/RingCollection';
+import PandentCollection from './component/PandentCollection';
 
 function App() {
   // Example: Cart ke items count manage karne ke liye state
@@ -21,6 +22,7 @@ function App() {
 <JewelryShowcase/>
 <JewelryHeroSection/>
 <RingCollection/>
+<PandentCollection/>
       <JewelrySlider/>
    <Footer/>
     </div>

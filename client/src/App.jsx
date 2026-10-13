@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import Navbar from './component/Navbar'; // Navbar ko yahan import karein
-import Display from './component/Display';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Navbar from './component/Navbar'; 
+import Display from './component/Display.jsx';
 import JewelryDisplay from './component/JewelryDisplay';
 import JewelrySlider from './component/JewelrySlider';
 import JewelryHeroSection from './component/JewelryHeroSection';
@@ -10,22 +11,41 @@ import RingCollection from './component/RingCollection';
 import PandentCollection from './component/PandentCollection';
 
 function App() {
-  // Example: Cart ke items count manage karne ke liye state
   const [cartCount, setCartCount] = useState(2);
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* 1. Navbar ko sab se upar place karein */}
-      <Navbar cartCount={cartCount} />
-<Display/>
-<JewelryDisplay/>
-<JewelryShowcase/>
-<JewelryHeroSection/>
-<RingCollection/>
-<PandentCollection/>
-      <JewelrySlider/>
-   <Footer/>
-    </div>
+    <Router>
+      <div className="min-h-screen bg-gray-50 flex flex-col justify-between">
+        {/* Navbar sab pages par common rahegi */}
+        <Navbar cartCount={cartCount} />
+
+        {/* Yahan Routes ke zariye alag-alag pages handle honge */}
+        <div className="flex-grow">
+          <Routes>
+            {/* Home Page (Jab URL sirf '/' ho) */}
+            <Route 
+              path="/" 
+              element={
+                <>
+                  <JewelryHeroSection />
+                  <JewelryShowcase />
+                  <JewelrySlider />
+                </>
+              } 
+            />
+
+            {/* Baqi components ke apne routes */}
+            <Route path="/display" element={<Display />} />
+            <Route path="/jewelryDisplay" element={<JewelryDisplay />} />
+            <Route path="/rings" element={<RingCollection />} />
+            <Route path="/pendants" element={<PandentCollection />} />
+          </Routes>
+        </div>
+
+        {/* Footer bhi sab pages par niche show hoga */}
+        <Footer />
+      </div>
+    </Router>
   );
 }
 

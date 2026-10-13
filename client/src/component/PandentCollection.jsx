@@ -13,7 +13,7 @@ const pandentCollections = [
 const PandentCollection= () => {
   return (
     <div className="max-w-6xl mx-auto p-6">
-      <h2 className="text-3xl font-bold text-center mb-8">Ring Collection</h2>
+      <h2 className="text-3xl font-bold text-center mb-8">Pandent Collection</h2>
       
       {/* 3 Divs per row layout using Tailwind Grid */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

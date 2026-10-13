@@ -1,5 +1,5 @@
 import React from 'react';
-import { Contact } from 'lucide-react';         // Icons yahan se aayenge
+// import { Contact } from 'lucide-react';         // Icons yahan se aayenge
 import { useNavigate } from 'react-router-dom';
 export default function Display() {
 
@@ -18,7 +18,7 @@ const navigate = useNavigate();
   src="/jewelry-bg.mp4"
   className="absolute top-0 left-0 w-full h-full object-cover z-0"
 >
-   <source src="/jewelry-bg.mp4" type="video/mp4" />
+   {/* <source src="/jewelry-bg.mp4" type="video/mp4" /> */}
     Your browser does not support the video tag.
   </video>
 

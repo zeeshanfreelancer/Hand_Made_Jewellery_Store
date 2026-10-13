@@ -1,7 +1,11 @@
-import { Contact } from 'lucide-react'
-import React from 'react'
-
+import React from 'react';
+import { Contact } from 'lucide-react';         // Icons yahan se aayenge
+import { useNavigate } from 'react-router-dom';
 export default function Display() {
+
+const navigate = useNavigate();
+
+
   return (
     <div>
        <main className="relative w-full h-[75vh] flex flex-col items-center justify-center overflow-hidden">
@@ -29,9 +33,12 @@ export default function Display() {
     <p className="text-lg md:text-xl text-gray-200 mt-4 max-w-xl mx-auto drop-shadow">
       Discover our luxurious rings, necklaces, and diamonds.
     </p>
-    <button className='m-5 p-3 rounded-xl text-lg bg-gray-200'>
-      Order Now
-    </button>
+   <button 
+  className='m-5 p-3 rounded-xl text-lg bg-gray-200 hover:bg-gray-300 transition cursor-pointer' 
+  onClick={() => navigate('/JewelrySlider')}
+>
+  order now
+</button>
   </div>
 </main>
     </div>

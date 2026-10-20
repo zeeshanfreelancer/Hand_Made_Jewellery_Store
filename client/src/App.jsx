@@ -9,6 +9,7 @@ import JewelryShowcase from './component/JewelryShowcase';
 import Footer from './component/Footer';
 import RingCollection from './component/RingCollection';
 import PandentCollection from './component/PandentCollection';
+import Auth from './component/Auth';
 
 function App() {
   const [cartCount, setCartCount] = useState(2);
@@ -39,6 +40,8 @@ function App() {
             <Route path="/jewelryDisplay" element={<JewelryDisplay />} />
             <Route path="/rings" element={<RingCollection />} />
             <Route path="/pendants" element={<PandentCollection />} />
+            <Route path="/login" element={<Auth initialMode="login" />} />
+            <Route path="/register" element={<Auth initialMode="register" />} />
           </Routes>
         </div>
 

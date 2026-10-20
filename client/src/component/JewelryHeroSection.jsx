@@ -14,18 +14,13 @@ const JewelryHeroSection = () => {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center bg-amber-50/40 rounded-3xl p-6 md:p-8 border border-amber-100 shadow-sm">
         
-        {/* Div 1: Video Display */}
-        <div className="relative h-[350px] md:h-[450px] w-full rounded-2xl overflow-hidden shadow-lg">
-          <video
-            autoPlay
-            loop
-            muted
-            playsInline
+        {/* Div 1: Jewelry Image */}
+        <div className="relative h-[320px] md:h-[460px] w-full rounded-2xl overflow-hidden shadow-lg">
+          <img
+            src="/assets/img1.jpg"
+            alt="Royal gold jewelry set"
             className="w-full h-full object-cover"
-          >
-            <source src="/jewelry-bg.mp4" type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
+          />
           {/* Subtle Overlay */}
           <div className="absolute inset-0 bg-black/10" />
         </div>

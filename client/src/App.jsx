@@ -13,6 +13,7 @@ import Auth from './component/Auth';
 import CategoryCollection from './component/CategoryCollection';
 import ProductDetail from './component/ProductDetail';
 import CartPage from './component/CartPage';
+import DeliveryInformation from './component/DeliveryInformation';
 
 function App() {
   const [cartItems, setCartItems] = useState([]);
@@ -73,6 +74,7 @@ function App() {
             <Route path="/sets" element={<CategoryCollection category="sets" />} />
             <Route path="/product/:category/:productId" element={<ProductDetail onAddToCart={addToCart} />} />
             <Route path="/cart" element={<CartPage cartItems={cartItems} onUpdateQuantity={updateCartQuantity} onRemoveItem={removeFromCart} />} />
+            <Route path="/checkout" element={<DeliveryInformation />} />
             <Route path="/login" element={<Auth initialMode="login" />} />
             <Route path="/register" element={<Auth initialMode="register" />} />
           </Routes>

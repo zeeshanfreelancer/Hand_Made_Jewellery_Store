@@ -11,9 +11,36 @@ import RingCollection from './component/RingCollection';
 import PandentCollection from './component/PandentCollection';
 import Auth from './component/Auth';
 import CategoryCollection from './component/CategoryCollection';
+import ProductDetail from './component/ProductDetail';
+import CartPage from './component/CartPage';
 
 function App() {
-  const [cartCount, setCartCount] = useState(2);
+  const [cartItems, setCartItems] = useState([]);
+  const cartCount = cartItems.reduce((total, item) => total + item.quantity, 0);
+
+  const addToCart = (product) => {
+    setCartItems((items) => {
+      const matchingItem = items.find((item) => item.id === product.id && item.color === product.color);
+      if (matchingItem) {
+        return items.map((item) => item.id === product.id && item.color === product.color
+          ? { ...item, quantity: item.quantity + product.quantity }
+          : item);
+      }
+      return [...items, product];
+    });
+  };
+
+  const updateCartQuantity = (product, quantity) => {
+    if (quantity < 1) {
+      setCartItems((items) => items.filter((item) => !(item.id === product.id && item.color === product.color)));
+      return;
+    }
+    setCartItems((items) => items.map((item) => item.id === product.id && item.color === product.color ? { ...item, quantity } : item));
+  };
+
+  const removeFromCart = (product) => {
+    setCartItems((items) => items.filter((item) => !(item.id === product.id && item.color === product.color)));
+  };
 
   return (
     <Router>
@@ -44,6 +71,8 @@ function App() {
             <Route path="/earrings" element={<CategoryCollection category="earrings" />} />
             <Route path="/bracelets" element={<CategoryCollection category="bracelets" />} />
             <Route path="/sets" element={<CategoryCollection category="sets" />} />
+            <Route path="/product/:category/:productId" element={<ProductDetail onAddToCart={addToCart} />} />
+            <Route path="/cart" element={<CartPage cartItems={cartItems} onUpdateQuantity={updateCartQuantity} onRemoveItem={removeFromCart} />} />
             <Route path="/login" element={<Auth initialMode="login" />} />
             <Route path="/register" element={<Auth initialMode="register" />} />
           </Routes>

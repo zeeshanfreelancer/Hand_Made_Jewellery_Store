@@ -16,9 +16,11 @@ const Navbar = ({ cartCount = 0 }) => {
   return (
     <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-amber-100 shadow-sm">
       {/* Top Banner (Optional - Announcement Bar) */}
+      {false && (
       <div className="bg-amber-900 text-amber-50 text-xs py-5 text-center font-light tracking-wide">
         ✨ Free Worldwide Shipping on Orders Over $150 ✨
       </div>
+      )}
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">

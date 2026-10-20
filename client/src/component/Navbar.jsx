@@ -1,5 +1,14 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Search, ShoppingBag, User, Menu, X } from 'lucide-react';
+
+const categories = [
+  { label: 'Earrings', path: '/earrings' },
+  { label: 'Rings', path: '/rings' },
+  { label: 'Bracelets', path: '/bracelets' },
+  { label: 'Pendants', path: '/pendants' },
+  { label: 'Sets', path: '/sets' },
+];
 
 const Navbar = ({ cartCount = 0 }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -27,14 +36,14 @@ const Navbar = ({ cartCount = 0 }) => {
           
          {/* 1. Logo Name */}
 <div className="flex-shrink-0 flex items-center">
-  <a href="/" className="group flex flex-col items-start">
+  <Link to="/" className="group flex flex-col items-start">
     <span className="font-serif text-2xl sm:text-3xl font-bold text-amber-900 tracking-wider group-hover:text-amber-700 transition">
       IQRA
     </span>
     <span className="text-[10px] sm:text-xs tracking-[0.25em] font-sans uppercase text-amber-700 font-medium -mt-1">
       Jewelry
     </span>
-  </a>
+  </Link>
 </div>
 
           {/* 2. Search Bar (Desktop) */}
@@ -56,13 +65,13 @@ const Navbar = ({ cartCount = 0 }) => {
             {/* Login / Register */}
             <div className="flex items-center space-x-2 text-sm text-gray-700">
               <User className="h-5 w-5 text-amber-900" />
-              <a href="/login" className="hover:text-amber-700 font-medium transition">
+              <Link to="/login" className="hover:text-amber-700 font-medium transition">
                 Login
-              </a>
+              </Link>
               <span className="text-gray-300">/</span>
-              <a href="/register" className="hover:text-amber-700 font-medium transition">
+              <Link to="/register" className="hover:text-amber-700 font-medium transition">
                 Register
-              </a>
+              </Link>
             </div>
 
             {/* Add to Cart Icon */}
@@ -96,6 +105,14 @@ const Navbar = ({ cartCount = 0 }) => {
 
         </div>
 
+        <nav aria-label="Jewelry categories" className="hidden md:flex items-center justify-center gap-6 border-t border-amber-100 py-3 text-sm font-medium text-amber-900">
+          {categories.map((category) => (
+            <Link key={category.path} to={category.path} className="hover:text-amber-700 transition-colors">
+              {category.label}
+            </Link>
+          ))}
+        </nav>
+
         {/* Search Bar for Mobile View */}
         <div className="md:hidden pb-4">
           <form onSubmit={handleSearch} className="relative">
@@ -115,14 +132,21 @@ const Navbar = ({ cartCount = 0 }) => {
       {isMenuOpen && (
         <div className="md:hidden bg-white border-b border-amber-100 px-4 pt-2 pb-6 space-y-4">
           <div className="pt-2 border-t border-amber-50 flex items-center justify-around text-sm font-medium">
-            <a href="/login" className="flex items-center gap-2 text-amber-900 hover:text-amber-700">
+            <Link to="/login" className="flex items-center gap-2 text-amber-900 hover:text-amber-700" onClick={() => setIsMenuOpen(false)}>
               <User className="h-4 w-4" /> Login
-            </a>
+            </Link>
             <span className="text-gray-300">|</span>
-            <a href="/register" className="text-amber-900 hover:text-amber-700">
+            <Link to="/register" className="text-amber-900 hover:text-amber-700" onClick={() => setIsMenuOpen(false)}>
               Register Account
-            </a>
+            </Link>
           </div>
+          <nav aria-label="Jewelry categories" className="grid grid-cols-2 gap-2 text-sm font-medium">
+            {categories.map((category) => (
+              <Link key={category.path} to={category.path} onClick={() => setIsMenuOpen(false)} className="rounded-lg bg-amber-50 px-3 py-2 text-center text-amber-900 hover:bg-amber-100 transition-colors">
+                {category.label}
+              </Link>
+            ))}
+          </nav>
         </div>
       )}
     </header>

@@ -10,6 +10,7 @@ import Footer from './component/Footer';
 import RingCollection from './component/RingCollection';
 import PandentCollection from './component/PandentCollection';
 import Auth from './component/Auth';
+import CategoryCollection from './component/CategoryCollection';
 
 function App() {
   const [cartCount, setCartCount] = useState(2);
@@ -40,6 +41,9 @@ function App() {
             <Route path="/jewelryDisplay" element={<JewelryDisplay />} />
             <Route path="/rings" element={<RingCollection />} />
             <Route path="/pendants" element={<PandentCollection />} />
+            <Route path="/earrings" element={<CategoryCollection category="earrings" />} />
+            <Route path="/bracelets" element={<CategoryCollection category="bracelets" />} />
+            <Route path="/sets" element={<CategoryCollection category="sets" />} />
             <Route path="/login" element={<Auth initialMode="login" />} />
             <Route path="/register" element={<Auth initialMode="register" />} />
           </Routes>

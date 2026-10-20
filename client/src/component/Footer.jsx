@@ -47,9 +47,9 @@ const Footer = () => {
               </Link>
             </li>
             <li>
-              <link to="/JewelrySlider" className="hover:text-amber-400 transition-colors">
+              <Link to="/JewelrySlider" className="hover:text-amber-400 transition-colors">
                 💒 Wedding & Engagement Bands
-              </link>
+              </Link>
             </li>
           </ul>
         </div>
